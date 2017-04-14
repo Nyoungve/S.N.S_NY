@@ -15,11 +15,36 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <div class="nav navbar-nav navbar-right btn-group btn-group-lg" role="group" aria-label="Large button group">
-					<input type="button" class="page-scroll btn btn-info btn-lg" data-toggle="modal" data-target="#Login" value="Login" onclick="location.href='login.do'">
-                    <input type="button" class="page-scroll btn btn-info btn-lg" data-toggle="modal" data-target="#SignUp" value="SingUp">
                     
-                    <!-- myPage 버튼은 로그인 안됬을때는 안보이도록 하는법 찾아보는 중 ...C_MainPage로 넘겨줌-->
-                   <!--  <input type="button" id="myPage" class="page-scroll btn btn-info btn-lg" value="MyPage" style="margin-right: 100px"> -->
+                    <!-- a태그로 login.do로 get으로 url요청 -->
+                    <a data-toggle="modal" href="login.do" data-target="#Login" role="button" data-backdrop="false" class="page-scroll btn btn-info btn-lg">
+ 						로그인
+					</a>
+
+					<!-- 내가 만든 로그인 폼 content까지만 등록-->
+					<div id="Login" class="modal fade" tabindex="-1" role="dialog"
+						aria-labelledby="myModalLabel">
+						<div class="modal-dialog modal-sm">
+							<div class="modal-content">
+							modal_login.jsp에  header, body, footer 작성하기
+							</div>
+						</div>
+					</div>
+					
+					<!-- 모달 로그인 끝 -->
+                    <!-- <input type="button" class="page-scroll btn btn-info btn-lg" data-toggle="modal" data-target="#SignUp" value="SingUp"> -->
+                	<!-- a태그로 login.do로 get으로 url요청 -->
+                    <a data-toggle="modal" href="join.do" data-target="#SignUp" role="button" data-backdrop="false" class="page-scroll btn btn-info btn-lg">
+ 						회원가입
+					</a>
+					<!-- 내가 만든 회원가입 폼 content까지만 등록-->
+					<div class="modal fade" id="SignUp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+						<div class="modal-dialog modal-lg">
+							<div class="modal-content">
+							modal_login.jsp에  header, body, footer 작성하기
+						</div>
+					</div>
+					<!-- 모달 회원가입 끝 -->
                 </div>
             </div>
 

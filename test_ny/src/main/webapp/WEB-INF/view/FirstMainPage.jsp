@@ -31,10 +31,8 @@
     <script src="vendor/jquery/jquery.min.js"></script>
      <!-- 달력 -->
 	<script type="text/javascript" src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-
+	
 	<!-- 달력 style 지정 -->	
-   
 	<style>
 		.ui-datepicker{width:100%;font-size:30px;}
 		.ui-datepicker select.ui-datepicker-month{width:100%;font-size:30px;}
@@ -56,14 +54,24 @@
 		alert("로그아웃 되었습니다.");
 	</script>
 </c:if>
+<c:if test="${msg=='failure'}">
+	<!-- <script type="text/javascript">
+		alert("아이디 또는 비밀번호가 일치하지 않습니다.");
+	</script> -->
+	<script >
+		alert("아이디 또는 비밀번호가 일치하지 않습니다.");
+	</script>
+</c:if>
+
 	<!-- tiles파일 -->
 	<%@include file="tiles/navbar.jsp"%>
 	<%@include file="tiles/header.jsp"%>
-	<%@include file="tiles/body_main.jsp"%>
+	<%@include file="tiles/body_main.jsp"%><!-- 레스토랑 상세페이지와 연결? -->
 	<%@include file="tiles/modal_login.jsp"%>
+	<%@include file="tiles/modal_join.jsp" %>
 	<%@include file="tiles/footer.jsp"%>
 	
-	 <!-- Bootstrap Core JavaScript -->
+	<!-- Bootstrap Core JavaScript -->
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
     <!-- Plugin JavaScript -->

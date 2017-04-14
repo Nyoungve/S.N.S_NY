@@ -9,23 +9,22 @@
 <html>
 <head>  
 	<title>로그인 </title>
-
 	
 	<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 	<script type="text/javascript">
-    $(document).ready(function(){
+	$(document).ready(function(){
         $("#btnLogin").click(function(){
             // 태크.val() : 태그에 입력된 값
             // 태크.val("값") : 태그의 값을 변경 
             var userId = $("#userid").val();
             var userPw = $("#password").val();
             if(userId == ""){
-                alert("아이디를 입력하세요.");
+                alert("아이디를 입력하세요.ㅠㅠ");
                 $("#userId").focus(); // 입력포커스 이동
                 return false; // 함수 종료
             }
             if(userPw == ""){
-                alert("비밀번호를 입력하세요.");
+                alert("비밀번호를 입력하세요.ㅠㅠ");
                 $("#usePw").focus();
                 return false;
             }
@@ -35,14 +34,11 @@
             document.loginForm.submit();
         });
     });
-</script>
+	</script>
 </head>
 <body>
 <!-- 내가 만든 로그인 폼 -->
-<div class="modal fade" id="Login" tabindex="-1" role="dialog"
-	aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog modal-sm">
-		<div class="modal-content">
+<!-- header, body, footer설정  -->
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal"
 					aria-label="Close">
@@ -73,7 +69,7 @@
 					
 					<!--<input type="submit" id="btnLogin" value="로그인"> -->
 					<div class="form-group">
-						<input type="submit" id="btnLogin" value="Login" />
+						<input type="submit" id="btnLogin" class="btn btn-lg btn-primary btn-block" value="Login" />
 					</div>
 					
 					<!-- <button>ID/PW찾기</button> -->
@@ -84,34 +80,35 @@
 					
 					<!-- <a href="join.do">회원이 아니세요? 회원가입하기</a> -->
 					<div class="form-group">
-						<input type="button" class="btn btn-lg btn-primary btn-block"
-							data-toggle="modal" data-target="#SignUp" value="회원가입">
+						<!-- a태그로 login.do로 get으로 url요청 -->
+	                    <a data-toggle="modal" href="join.do" data-target="#SignUp" role="button" data-backdrop="false" class="page-scroll btn btn-info btn-lg">
+	 						회원가입
+						</a>
 					</div>
 					
-						<c:if test="${msg=='failure'}">
-							<!-- <script type="text/javascript">
-								alert("아이디 또는 비밀번호가 일치하지 않습니다.");
-							</script> -->
-							<script >
-								alert("아이디 또는 비밀번호가 일치하지 않습니다.");
-							</script>
-						</c:if>
-						<c:if test="${msg=='logout'}">
-							<script >
-								alert("로그아웃 되었습니다.");
-							</script>
-						</c:if>
+					<!-- 내가 만든 회원가입 폼 content까지만 등록-->
+						<div id="SignUp" class="modal fade" tabindex="-1" role="dialog" 
+							aria-labelledby="myModalLabel">
+							<div class="modal-dialog modal-lg">
+								<div class="modal-content">
+								modal_login.jsp에  header, body, footer 작성하기
+							</div>
+						</div>
+					</div>
+					<c:if test="${msg=='failure'}">
+						<script >
+							alert("아이디 또는 비밀번호가 일치하지 않습니다.");
+						</script>
+					</c:if>
 				</form:form>
 				</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 			</div>
-		</div>
-	</div>
-</div>
 <!-- 모달 로그인 끝 -->
 
 <!-- 모달 로그인 시작
+
 <div class="modal fade" id="Login" tabindex="-1" role="dialog"
 	aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-sm">
@@ -158,9 +155,11 @@
 		</div>
 	</div>
 </div>
- 모달 로그인 끝 -->
+           
+           모달 로그인 끝 -->
 
 <!-- 모달 ID/PW찾기 시작 -->
+ 
 <div class="modal fade" id="Find" tabindex="-1" role="dialog"
 	aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-sm">
@@ -190,6 +189,7 @@
 	</div>
 </div>
 </div>
+
 <!-- 모달 ID/PW찾기 끝 -->
 
 <!-- 모달 ID찾기 시작 -->
@@ -228,7 +228,7 @@
 		</div>
 	</div>
 </div>
-<!-- 모달 ID찾기 끝 -->
+<!--모달 ID찾기 끝 -->
 
 <!-- 모달 PW찾기 시작 -->
 <div class="modal fade" id="FindPW" tabindex="-1" role="dialog"
@@ -270,9 +270,11 @@
 		</div>
 	</div>
 </div>
+
 <!-- 모달 PW찾기 끝 -->
 
-<!-- 모달 회원가입 시작 -->
+
+<!-- 모달 회원가입 시작 
 <div class="modal fade" id="SignUp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
@@ -325,9 +327,10 @@
 		</div>
 	</div>
 </div>
-<!-- 모달 회원가입 끝 -->
+모달 회원가입 끝 -->
 
-<!-- 모달 IDCheck 시작 -->
+
+<!-- 모달 IDCheck 시작
 <div class="modal fade" id="IDCheck" tabindex="-1" role="dialog"
 	aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-sm">
@@ -343,13 +346,13 @@
 				<div style="align-content: center">
 
 					<!--ID Check  성공시 출력-->
-					<p>사용할 수 있는 ID 입니다.</p>
+					<!-- <p>사용할 수 있는 ID 입니다.</p> -->
 
 					<!--ID Check  실패시 출력-->
-					<p>
+				<!--  <p>
 						중복되는 ID 입니다. <br> 다시 입력해 주세요.
 					</p>
-				</div>
+				 </div>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -357,7 +360,8 @@
 		</div>
 	</div>
 </div>
-<!-- 모달 IDCheck 시작 -->
+모달 IDCheck 시작 -->
+
 
 <!-- 모달 인증코드 발송 시작 -->
 <div class="modal fade" id="Code" tabindex="-1" role="dialog"
@@ -383,6 +387,7 @@
 		</div>
 	</div>
 </div>
-<!-- 모달 인증코드 발송 끝 -->
+ <!-- 모달 인증코드 발송 끝 -->
+ 
 </body>
 </html>

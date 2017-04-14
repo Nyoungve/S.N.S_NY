@@ -15,7 +15,7 @@
 <context:component-scan base-package="sns.customer.controller"></context:component-scan>
 <context:component-scan base-package="sns.administrator.controller"></context:component-scan>
 <context:component-scan base-package="sns.enterprise.controller"></context:component-scan>
-
+<context:component-scan base-package="sns.mail.controller"></context:component-scan>
 
 <!-- 뷰 리졸버 등록 -->
 <bean name="viewResolvor" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -24,6 +24,10 @@
 </bean>
 
 <!-- Dao 등록 -->
+	<!-- 회원가입처리 DAO -->
+	<bean id="c_JoinDAO" class="sns.dao.C_JoinDAO">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
 	<!-- 로그인처리 DAO -->
 	<bean id="c_LoginDAO" class="sns.dao.C_LoginDAO">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
@@ -58,10 +62,8 @@
 	</bean>
 	
 	
-	
-	
-<!-- 예외처리 페이지 -->	
-<bean
+	<!-- 예외처리 페이지 -->	
+	<bean
 		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
 		<property name="exceptionMappings">
 			<props>
@@ -76,7 +78,16 @@
 		</property>
 	</bean>			
 			
-			
+	<!-- 
+	인터셉터 세션 로그인 처리 
+	-->
+	<mvc:interceptors>
+	    <mvc:interceptor>
+	        <mvc:mapping path="/restaurantDetailView.do" /> <!-- 모든 URL 에 대해 Interceptor 를 적용하고자 한다면 /** -->
+	        <bean class="sns.session.interceptor.Interceptor"/> <!-- HandlerInterceptor 인터페이스를 구현한 클래스 -->
+	    	<!-- 추가로 여러개의 인터셉터 설정이 가능하다. -->
+	    </mvc:interceptor>
+	</mvc:interceptors>		
 <!-- 한글 처리 -->		
 <mvc:annotation-driven>
 		<mvc:message-converters>

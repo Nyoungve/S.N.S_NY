@@ -45,12 +45,14 @@
 <title>S.N.S 고객 메인페이지 입니다.</title>
 </head>
 <body id="page-top">
+
 	<c:if test="${msg=='success'}">
 		<script type="text/javascript">
 			alert("로그인 성공!");
 		</script>
 	</c:if>
-	<!-- 네이게이션 바 시작 -->
+	
+	<%-- <!-- 네이게이션 바 시작 -->
 	<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
 		<div class="container-fluid">
 			<!-- Brand and toggle get grouped for better mobile display -->
@@ -71,7 +73,6 @@
                     <input type="button" id="myPage" class="page-scroll btn btn-info btn-lg" value="MyPage" style="margin-right: 100px">
                 </div>
             </div>
-
 			<!-- /.navbar-collapse -->
 		</div>
 		<!-- /.container-fluid -->
@@ -123,9 +124,10 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> --%>
  	<!--모달 로그아웃 끝 -->
 	<!-- tiles파일 -->
+	<%@include file="tiles/navbar_logout.jsp"%>
 	<%@include file="tiles/header.jsp"%>
 	<%@include file="tiles/body_main.jsp"%>
 	<%@include file="tiles/footer.jsp"%>
